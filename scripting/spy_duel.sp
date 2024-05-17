@@ -5,8 +5,6 @@
 #pragma semicolon 1
 
 
-#define PLUGIN_VERSION "0.0.2"
-
 #define ERROR_UNEXPECTED "[Spy Duel] An unexpected error occoured!"
 #define ERROR_PLAYER_NOT_FOUND "[Spy Duel] Unable to find player!"
 #define ERROR_WAITING_FOR_RESPONSE "[Spy Duel] You already challenged a player and need to wait for a response. To cancel type !spyduelexit"
@@ -26,6 +24,9 @@
 #define SOUND_DUEL_CHALLENGE_ACCEPT "ui/duel_challenge_accepted_with_restriction.wav"
 #define SOUND_DUEL_CHALLENGE_REJECT "ui/duel_challenge_rejected_with_restriction.wav"
 #define SOUND_DUEL_EVENT "ui/duel_event.wav"
+
+
+#define PLUGIN_VERSION "0.0.3"
 
 public Plugin myinfo =
 {
@@ -272,7 +273,7 @@ int Menu_AskPlayerForDuel(Menu menu, MenuAction action, int client, int item)
 				PlayDuelSound(client, player, SOUND_DUEL_CHALLENGE_REJECT);
 				PrintToChatAll("%N has rejected %N's Spy Duel", client, player);
 				g_PlayerData[client].Clear();
-				g_PlayerData[client].Clear();
+				g_PlayerData[player].Clear();
 			}
 		}
 
