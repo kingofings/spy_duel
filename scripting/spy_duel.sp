@@ -26,7 +26,7 @@
 #define SOUND_DUEL_EVENT "ui/duel_event.wav"
 
 
-#define PLUGIN_VERSION "0.0.5"
+#define PLUGIN_VERSION "0.0.6"
 
 public Plugin myinfo =
 {
@@ -350,6 +350,8 @@ void PrintDuelResults(int player1, int player2)
 
 void EndSpyDuel(int client)
 {
+	if (g_PlayerData[client].duelPartner == 0)return;
+
 	int partner = GetClientOfUserId(g_PlayerData[client].duelPartner);
 
 	PlayDuelSound(client, partner, SOUND_DUEL_EVENT);
