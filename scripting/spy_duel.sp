@@ -26,7 +26,7 @@
 #define SOUND_DUEL_EVENT "ui/duel_event.wav"
 
 
-#define PLUGIN_VERSION "0.0.4"
+#define PLUGIN_VERSION "0.0.5"
 
 public Plugin myinfo =
 {
@@ -165,6 +165,7 @@ Action Command_SpyDuel(int client, int args)
 	if (count == 0)
 	{
 		ReplyToCommand(client, ERROR_NO_PLAYER_FOUND);
+		delete menu;
 		return Plugin_Handled;
 	}
 	menu.Display(client, MENU_TIME_FOREVER);
