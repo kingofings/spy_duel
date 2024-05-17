@@ -33,4 +33,4 @@
 2. To stop a duel use !spyduelexit
 
 ## Additional Features ##
-- Tracks the amount of butterknife hits and backstabs and Prints the result after ending the duel in chat.
+- Tracks the amount of butterknife hits and backstabs and prints the result after ending the duel in chat.
