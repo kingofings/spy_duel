@@ -245,7 +245,23 @@ int Menu_AskPlayerForDuel(Menu menu, MenuAction action, int client, int item)
 		{
 			char playerIndexstring[8];
 			menu.GetItem(item, playerIndexstring, sizeof(playerIndexstring));
-			int player = StringToInt(playerIndexstring);
+			int userId = StringToInt(playerIndexstring);
+
+			if (userId <= 0)
+			{
+				PrintToChat(client, ERROR_UNEXPECTED);
+				g_PlayerData[client].Clear();
+				return -1;
+			}
+
+			int player = GetClientOfUserId(userId);
+
+			if (player <= 0)
+			{
+				PrintToChat(client, ERROR_PLAYER_NOT_FOUND);
+				g_PlayerData[client].Clear();
+				return -1;
+			}
 
 			if (item == 0)
 			{
@@ -296,7 +312,7 @@ void AskPlayerForDuel(int client, int player)
 	char initiatorName[MAX_NAME_LENGTH];
 	char initiatorIndex[8];
 	GetClientName(client, initiatorName, sizeof(initiatorName));
-	IntToString(client, initiatorIndex, sizeof(initiatorIndex));
+	IntToString(GetClientUserId(client), initiatorIndex, sizeof(initiatorIndex));
 
 	menu.SetTitle("%N wants to Spy duel you!", client);
 	menu.AddItem(initiatorIndex, "Accept Duel");
