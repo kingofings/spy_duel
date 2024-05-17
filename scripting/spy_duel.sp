@@ -5,7 +5,7 @@
 #pragma semicolon 1
 
 
-#define PLUGIN_VERSION "0.0.1"
+#define PLUGIN_VERSION "0.0.2"
 
 #define ERROR_UNEXPECTED "[Spy Duel] An unexpected error occoured!"
 #define ERROR_PLAYER_NOT_FOUND "[Spy Duel] Unable to find player!"
@@ -53,6 +53,13 @@ enum struct PlayerData
 }
 
 PlayerData g_PlayerData[MAXPLAYERS + 1];
+
+public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
+{
+	if (GetEngineVersion() != Engine_TF2)SetFailState("This plugin was made for use with Team Fortress 2 only.");
+
+	return APLRes_Success;
+}
 
 public void OnPluginStart()
 {
