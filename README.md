@@ -1,7 +1,7 @@
 <div align="center">
-  <h1><code>spy_duel</code></h1>
+  <h1><code>Spy Knife duel</code></h1>
   <p>
-    <strong>Short Description</strong>
+    <strong>Plugin allows for 2 Players to duel with backstabs only. Any kind of damage is still dealt to keep things like push force in tact. However only backstabs will kill</strong>
   </p>
   <p style="margin-bottom: 0.5ex;">
     <img
@@ -31,3 +31,6 @@
 ## Usage ##
 1. To start a duel use !spyduel
 2. To stop a duel use !spyduelexit
+
+## Additional Features ##
+- Tracks the amount of butterknife hits and backstabs and Prints the result after ending the duel in chat.
