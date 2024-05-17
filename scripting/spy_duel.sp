@@ -26,7 +26,7 @@
 #define SOUND_DUEL_EVENT "ui/duel_event.wav"
 
 
-#define PLUGIN_VERSION "0.0.3"
+#define PLUGIN_VERSION "0.0.4"
 
 public Plugin myinfo =
 {
