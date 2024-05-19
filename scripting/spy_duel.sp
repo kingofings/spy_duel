@@ -26,7 +26,7 @@
 #define SOUND_DUEL_EVENT "ui/duel_event.wav"
 
 
-#define PLUGIN_VERSION "0.0.6"
+#define PLUGIN_VERSION "0.0.7"
 
 public Plugin myinfo =
 {
@@ -266,7 +266,7 @@ int Menu_AskPlayerForDuel(Menu menu, MenuAction action, int client, int item)
 
 			if (item == 0)
 			{
-				if (g_PlayerData[player].isAwaitingResponse)
+				if (!g_PlayerData[player].isAwaitingResponse)
 				{
 					PrintToChat(client, ERROR_CHALLENGER_CANCELLED);
 					g_PlayerData[client].Clear();
