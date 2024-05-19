@@ -280,8 +280,10 @@ int Menu_AskPlayerForDuel(Menu menu, MenuAction action, int client, int item)
 				g_PlayerData[player].duelPartner = GetClientUserId(client);
 				PrintToChatAll("%N has accepted %N's Spy Duel", client, player);
 
+				RemoveInvicibility(client);
 				SDKHooks_TakeDamage(client, client, client, 100000.0, DMG_GENERIC, client, NULL_VECTOR, NULL_VECTOR, true);
 				TF2_SetPlayerClass(client, TFClass_Spy, true);
+				RemoveInvicibility(player);
 				SDKHooks_TakeDamage(player, player, player, 100000.0, DMG_GENERIC, player, NULL_VECTOR, NULL_VECTOR, true);
 				TF2_SetPlayerClass(player, TFClass_Spy, true);
 			}
@@ -372,4 +374,13 @@ void EndAllDuels()
 	{
 		if (g_PlayerData[i].duelPartner != 0)EndSpyDuel(i);
 	}
+}
+
+void RemoveInvicibility(int client)
+{
+	TF2_RemoveCondition(client, TFCond_Ubercharged);
+	TF2_RemoveCondition(client, TFCond_UberchargedCanteen);
+	TF2_RemoveCondition(client, TFCond_UberchargedHidden);
+	TF2_RemoveCondition(client, TFCond_UberchargedOnTakeDamage);
+	TF2_RemoveCondition(client, TFCond_UberchargeFading);
 }
